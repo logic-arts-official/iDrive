@@ -2,9 +2,11 @@
 
 This document details the Windows virtual drive implementation using Cloud Filter APIs.
 
+*Note: This is a fork of [Internxt Drive Desktop](https://github.com/internxt/drive-desktop). Virtual drive documentation preserved from original project.*
+
 ## Overview
 
-The virtual drive feature allows Internxt Drive Desktop to present cloud files as if they were local, without actually downloading them until needed. This is achieved using Windows Cloud Filter Driver APIs.
+The virtual drive feature allows iDrive Desktop to present cloud files as if they were local, without actually downloading them until needed. This is achieved using Windows Cloud Filter Driver APIs.
 
 ## Architecture
 
@@ -22,13 +24,13 @@ The virtual drive feature allows Internxt Drive Desktop to present cloud files a
                  │ Cloud Filter Callbacks
                  ↓
 ┌─────────────────────────────────────────┐
-│      Internxt Drive Desktop             │
+│      iDrive Desktop                     │
 │      (Native Addon + Sync Engine)       │
 └────────────────┬────────────────────────┘
                  │ Fetch/Store
                  ↓
 ┌─────────────────────────────────────────┐
-│         Internxt Cloud Storage          │
+│         Cloud Storage                   │
 └─────────────────────────────────────────┘
 ```
 
@@ -233,7 +235,7 @@ The sync root folder is a special folder registered with Windows:
 
 ```typescript
 await VirtualDrive.createSyncRootFolder({
-  rootPath: 'C:\\Users\\Username\\InternxtDrive',
+  rootPath: 'C:\\Users\\Username\\iDrive',
 });
 ```
 
@@ -563,7 +565,7 @@ process.env.DEBUG_VIRTUAL_DRIVE = 'true';
 ## Support
 
 For issues or questions:
-1. Check logs in: `%APPDATA%\Internxt\logs`
+1. Check logs in: `%APPDATA%\iDrive\logs`
 2. Enable debug mode
 3. Report issues with log excerpts
 4. Include Windows version and disk type

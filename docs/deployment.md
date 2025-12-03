@@ -135,7 +135,7 @@ After packaging:
 
 ```
 build/
-├── Internxt-Setup-2.6.3.exe      # Windows installer
+├── iDrive-Setup-2.6.3.exe         # Windows installer
 ├── win-unpacked/                  # Unpacked application
 ├── builder-debug.yml              # Build debug info
 └── builder-effective-config.yaml  # Effective config

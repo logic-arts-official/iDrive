@@ -17,7 +17,7 @@ This document describes the testing strategy and practices for iDrive Desktop.
 
 ## Overview
 
-Internxt Drive Desktop uses **Vitest** as its primary testing framework. Tests are co-located with source files and organized by layer and responsibility.
+iDrive Desktop uses **Vitest** as its primary testing framework. Tests are co-located with source files and organized by layer and responsibility.
 
 *Note: Testing infrastructure inherited from original Internxt project.*
 
