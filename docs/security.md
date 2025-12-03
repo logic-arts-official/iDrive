@@ -1,6 +1,8 @@
 # Security Guide
 
-This document outlines security practices and considerations for Internxt Drive Desktop.
+This document outlines security practices and considerations for iDrive Desktop.
+
+*Note: This is a fork of [Internxt Drive Desktop](https://github.com/internxt/drive-desktop). Security architecture preserved from original project.*
 
 ## Table of Contents
 
@@ -18,7 +20,7 @@ This document outlines security practices and considerations for Internxt Drive 
 
 ### Defense in Depth
 
-Internxt Drive Desktop implements multiple layers of security:
+iDrive Desktop implements multiple layers of security:
 
 ```
 ┌────────────────────────────────────────┐
@@ -59,6 +61,7 @@ All files are encrypted **before** leaving the user's device:
 ```typescript
 import { encryptFile } from '@internxt/sdk';
 
+// Note: Uses original Internxt SDK for compatibility
 // 1. Generate encryption key from user password
 const encryptionKey = await deriveKey(userPassword);
 
@@ -74,8 +77,7 @@ await uploadFile(encryptedStream);
 
 **Key Properties**:
 - Files encrypted client-side
-- Internxt servers cannot decrypt files
-- Zero-knowledge architecture
+- Servers cannot decrypt files (zero-knowledge architecture)
 - AES-256 encryption
 
 ### Encryption Libraries
@@ -559,7 +561,7 @@ interface ScanConfig {
 1. **Use Strong Passwords**
    - Minimum 12 characters
    - Mix of letters, numbers, symbols
-   - Unique to Internxt
+   - Unique password
 
 2. **Enable 2FA**
    - Use authenticator app
@@ -631,7 +633,7 @@ Regular security assessments include:
 
 **Do NOT** open public issues for security vulnerabilities.
 
-**Contact**: security@internxt.com
+**Contact**: Use GitHub Security Advisories for this repository
 
 **Include**:
 - Detailed description

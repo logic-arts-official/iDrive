@@ -1,6 +1,8 @@
 # Deployment Guide
 
-This guide covers building, packaging, and deploying Internxt Drive Desktop for production.
+This guide covers building, packaging, and deploying iDrive Desktop for production.
+
+*Note: This is a fork of [Internxt Drive Desktop](https://github.com/internxt/drive-desktop). Deployment documentation adapted from original project.*
 
 ## Table of Contents
 
@@ -101,8 +103,8 @@ From `package.json`:
 ```json
 {
   "build": {
-    "productName": "Internxt",
-    "appId": "com.internxt.drive",
+    "productName": "iDrive",
+    "appId": "com.logicarts.idrive",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
     "files": [
@@ -113,7 +115,7 @@ From `package.json`:
     "win": {
       "target": "nsis",
       "verifyUpdateCodeSignature": false,
-      "artifactName": "Internxt-Setup-${version}.${ext}"
+      "artifactName": "iDrive-Setup-${version}.${ext}"
     },
     "directories": {
       "buildResources": "assets",
@@ -174,11 +176,11 @@ export CSC_KEY_PASSWORD=your_password
 
 ```powershell
 # Check signature
-Get-AuthenticodeSignature Internxt-Setup-2.6.3.exe
+Get-AuthenticodeSignature iDrive-Setup-2.6.3.exe
 
 # Should show:
 # Status: Valid
-# SignerCertificate: CN=Internxt
+# SignerCertificate: CN=YourCompany
 ```
 
 ## Auto-Updates
@@ -193,7 +195,7 @@ import { autoUpdater } from 'electron-updater';
 // Configure
 autoUpdater.setFeedURL({
   provider: 'generic',
-  url: 'https://updates.internxt.com/drive-desktop',
+  url: 'https://your-update-server.com/idrive-desktop',
 });
 
 // Check for updates
@@ -224,10 +226,10 @@ autoUpdater.on('error', (error) => {
 **File Structure**:
 
 ```
-updates.internxt.com/drive-desktop/
+your-update-server.com/idrive-desktop/
 ├── latest.yml                     # Update metadata
-├── Internxt-Setup-2.6.3.exe      # Latest installer
-└── Internxt-Setup-2.6.3.exe.blockmap  # Delta updates
+├── iDrive-Setup-2.6.3.exe        # Latest installer
+└── iDrive-Setup-2.6.3.exe.blockmap  # Delta updates
 ```
 
 **latest.yml Example**:
@@ -236,10 +238,10 @@ updates.internxt.com/drive-desktop/
 version: 2.6.3
 releaseDate: '2024-01-15T10:00:00.000Z'
 files:
-  - url: Internxt-Setup-2.6.3.exe
+  - url: iDrive-Setup-2.6.3.exe
     sha512: abc123...
     size: 123456789
-path: Internxt-Setup-2.6.3.exe
+path: iDrive-Setup-2.6.3.exe
 sha512: abc123...
 releaseNotes: |
   - New feature X
@@ -299,7 +301,7 @@ npm ci
 npm run package
 
 # Verify installer
-build/Internxt-Setup-2.6.4.exe
+build/iDrive-Setup-2.6.4.exe
 ```
 
 ### 5. Code Signing
@@ -424,8 +426,9 @@ jobs:
 **Configuration** (`sonar-project.properties`):
 
 ```properties
-sonar.projectKey=internxt_drive-desktop
-sonar.organization=internxt
+# Note: Update these settings for your own SonarCloud project
+sonar.projectKey=your-org_idrive-desktop
+sonar.organization=your-org
 sonar.sources=src
 sonar.tests=src
 sonar.test.inclusions=**/*.test.ts,**/*.test.tsx
@@ -445,7 +448,7 @@ Set in webpack configs or `.env`:
 
 ```bash
 NODE_ENV=production
-API_URL=https://api.internxt.com
+API_URL=https://your-api-server.com
 SENTRY_DSN=https://...
 ```
 
@@ -513,7 +516,7 @@ npm run build
 
 **Issue**: Application won't start
 
-**Solution**: Check logs in `%APPDATA%\Internxt\logs`
+**Solution**: Check logs in `%APPDATA%\iDrive\logs`
 
 ## Best Practices
 

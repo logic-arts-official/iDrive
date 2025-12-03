@@ -1,8 +1,10 @@
 # Architecture Documentation
 
+*Note: This is a fork of [Internxt Drive Desktop](https://github.com/internxt/drive-desktop). Technical architecture documentation preserved from original project.*
+
 ## Overview
 
-Internxt Drive Desktop is an Electron-based desktop application that provides seamless file synchronization between local systems and Internxt cloud storage. The application uses a virtual drive approach with real-time synchronization capabilities.
+iDrive Desktop is an Electron-based desktop application that provides seamless file synchronization between local systems and cloud storage. The application uses a virtual drive approach with real-time synchronization capabilities.
 
 ## Technology Stack
 
@@ -318,9 +320,9 @@ Configuration persisted via `electron-store`:
 
 ### Key Production Dependencies
 
-- `@internxt/drive-desktop-core`: Core synchronization logic
-- `@internxt/sdk`: Internxt API SDK
-- `@internxt/inxt-js`: File operations
+- `@internxt/drive-desktop-core`: Core synchronization logic (from original project)
+- `@internxt/sdk`: Internxt API SDK (from original project)
+- `@internxt/inxt-js`: File operations (from original project)
 - `better-sqlite3`: Database
 - `chokidar`: File watching
 - `electron-updater`: Auto-updates

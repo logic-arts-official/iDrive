@@ -1,6 +1,8 @@
-# Contributing to Internxt Drive Desktop
+# Contributing to iDrive Desktop
 
-Thank you for your interest in contributing to Internxt Drive Desktop! This guide will help you get started.
+Thank you for your interest in contributing to iDrive Desktop! This guide will help you get started.
+
+*Note: This is a fork of [Internxt Drive Desktop](https://github.com/internxt/drive-desktop). See [LICENSE](LICENSE) for original copyright information.*
 
 ## Table of Contents
 
@@ -42,10 +44,11 @@ See the images in `public/` directory for reference.
 
 ## Development Setup
 
-### 1. Clone the Repository
+### 1. Fork and Clone the Repository
 
 ```bash
-git clone https://github.com/logic-arts-official/iDrive.git
+# Fork the repository on GitHub first, then:
+git clone https://github.com/YOUR-USERNAME/iDrive.git
 cd iDrive
 ```
 
@@ -469,4 +472,9 @@ npm run type-check
 
 By contributing, you agree that your contributions will be licensed under the MIT License.
 
-Thank you for contributing to Internxt Drive Desktop! 🚀
+## Acknowledgments
+
+This project is a fork of [Internxt Drive Desktop](https://github.com/internxt/drive-desktop).  
+Original work Copyright (c) 2024 Internxt.
+
+Thank you for contributing to iDrive Desktop! 🚀
