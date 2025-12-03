@@ -1,6 +1,8 @@
 # Testing Guide
 
-This document describes the testing strategy and practices for Internxt Drive Desktop.
+This document describes the testing strategy and practices for iDrive Desktop.
+
+*Note: This is a fork of [Internxt Drive Desktop](https://github.com/internxt/drive-desktop). Testing documentation preserved from original project.*
 
 ## Table of Contents
 
@@ -15,7 +17,9 @@ This document describes the testing strategy and practices for Internxt Drive De
 
 ## Overview
 
-Internxt Drive Desktop uses **Vitest** as its primary testing framework. Tests are co-located with source files and organized by layer and responsibility.
+iDrive Desktop uses **Vitest** as its primary testing framework. Tests are co-located with source files and organized by layer and responsibility.
+
+*Note: Testing infrastructure inherited from original Internxt project.*
 
 ### Test Types
 

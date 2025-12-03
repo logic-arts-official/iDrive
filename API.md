@@ -1,6 +1,8 @@
 # API Documentation
 
-This document provides an overview of the key APIs, interfaces, and modules in Internxt Drive Desktop.
+This document provides an overview of the key APIs, interfaces, and modules in iDrive Desktop.
+
+*Note: This is a fork of [Internxt Drive Desktop](https://github.com/internxt/drive-desktop). API documentation preserved from original project.*
 
 ## Table of Contents
 
@@ -425,6 +427,8 @@ const plaintext = await decrypt(encrypted, password);
 
 ### File Encryption (via @internxt/sdk)
 
+*Note: Uses original Internxt SDK for encryption compatibility*
+
 ```typescript
 import { encryptFile, decryptFile } from '@internxt/sdk';
 
@@ -445,7 +449,7 @@ const decryptedStream = await decryptFile(
 
 ### Drive Server Client (`src/infra/drive-server-wip/`)
 
-HTTP client for Internxt backend API.
+HTTP client for backend API (using Internxt SDK for compatibility).
 
 ```typescript
 import { driveServerWipModule } from '@/infra/drive-server-wip';

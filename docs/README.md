@@ -1,6 +1,8 @@
 # Documentation Index
 
-Welcome to the Internxt Drive Desktop documentation!
+Welcome to the iDrive Desktop documentation!
+
+*Note: This is a fork of [Internxt Drive Desktop](https://github.com/internxt/drive-desktop). Documentation adapted from original project.*
 
 ## 📖 Main Documentation
 
