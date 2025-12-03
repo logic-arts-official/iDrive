@@ -1,6 +1,8 @@
 # Developer Quick Reference
 
-Quick reference guide for common development tasks in Internxt Drive Desktop.
+Quick reference guide for common development tasks in iDrive Desktop.
+
+*Note: This is a fork of [Internxt Drive Desktop](https://github.com/internxt/drive-desktop). Development guide adapted from original project.*
 
 ## Table of Contents
 
@@ -18,8 +20,9 @@ Quick reference guide for common development tasks in Internxt Drive Desktop.
 ### First Time Setup
 
 ```bash
-# Clone repository
-git clone https://github.com/logic-arts-official/iDrive.git
+# Fork the repository on GitHub first, then:
+# Clone your fork
+git clone https://github.com/YOUR-USERNAME/iDrive.git
 cd iDrive
 
 # Install Node.js 20
@@ -143,7 +146,7 @@ logger.warn({ msg: 'Warning', data });
 logger.error({ msg: 'Error', error, data });
 ```
 
-Logs location: `%APPDATA%\Internxt\logs`
+Logs location: `%APPDATA%\iDrive\logs`
 
 ## Code Quality
 
@@ -344,17 +347,17 @@ netstat -ano | findstr :1212
 taskkill /PID <pid> /F
 
 # Open app data
-start %APPDATA%\Internxt
+start %APPDATA%\iDrive
 
 # View logs
-notepad %APPDATA%\Internxt\logs\main.log
+notepad %APPDATA%\iDrive\logs\main.log
 ```
 
 ### Electron
 
 ```bash
 # Clear Electron cache
-rm -rf %APPDATA%\Internxt
+rm -rf %APPDATA%\iDrive
 
 # Reinstall Electron
 node node_modules/electron/install.js

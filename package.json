@@ -1,10 +1,18 @@
 {
-  "name": "internxt-drive",
+  "name": "idrive-desktop",
   "version": "2.6.3",
-  "author": "Internxt <hello@internxt.com>",
-  "description": "Internxt client UI",
+  "author": "Logic Arts <contact@logic-arts.com>",
+  "description": "iDrive Desktop - Secure file synchronization client (fork of Internxt Drive)",
   "main": "./dist/main/main.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/logic-arts-official/iDrive.git"
+  },
+  "bugs": {
+    "url": "https://github.com/logic-arts-official/iDrive/issues"
+  },
+  "homepage": "https://github.com/logic-arts-official/iDrive#readme",
   "scripts": {
     "build": "concurrently \"npm run build:main\" \"npm run build:renderer\" \"npm run build:sync-engine\" \"npm run build:preload\"",
     "build:main": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config .erb/configs/webpack.config.main.prod.ts",
@@ -47,8 +55,8 @@
     "swagger_prod": "openapi-typescript https://gateway.internxt.com/drive/api-json -o ./src/apps/shared/HttpClient/schema.ts"
   },
   "build": {
-    "productName": "Internxt",
-    "appId": "com.internxt.drive",
+    "productName": "iDrive",
+    "appId": "com.logicarts.idrive",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
     "files": [
@@ -57,15 +65,15 @@
       "package.json"
     ],
     "protocols": {
-      "name": "Internxt",
+      "name": "iDrive",
       "schemes": [
-        "internxt"
+        "idrive"
       ]
     },
     "win": {
       "target": "nsis",
       "verifyUpdateCodeSignature": false,
-      "artifactName": "Internxt-Setup-${version}.${ext}"
+      "artifactName": "iDrive-Setup-${version}.${ext}"
     },
     "directories": {
       "buildResources": "assets",

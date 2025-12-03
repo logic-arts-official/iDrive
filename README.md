@@ -1,4 +1,4 @@
-# Internxt Drive Desktop
+# iDrive Desktop
 
 <div align="center">
 
@@ -8,7 +8,9 @@
 
 </div>
 
-Internxt Drive Desktop is a secure, privacy-focused desktop application that seamlessly synchronizes your files between your local system and Internxt cloud storage using virtual drive technology.
+iDrive Desktop is a secure, privacy-focused desktop application that seamlessly synchronizes your files between your local system and cloud storage using virtual drive technology.
+
+*Note: This is a fork of [Internxt Drive Desktop](https://github.com/internxt/drive-desktop). See [LICENSE](LICENSE) for original copyright information.*
 
 ## ✨ Features
 
@@ -175,33 +177,20 @@ We welcome contributions! Please read our [Contributing Guidelines](./CONTRIBUTI
 
 Security is our top priority. For details on our security architecture and best practices, see [Security Guide](./docs/security.md).
 
-**Report vulnerabilities**: security@internxt.com (Do NOT use public issues)
+**Report vulnerabilities**: Please report security issues via GitHub Security Advisories (Do NOT use public issues)
 
 ## 📊 Code Quality
 
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=internxt_drive-desktop&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=internxt_drive-desktop)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=internxt_drive-desktop&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=internxt_drive-desktop)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=internxt_drive-desktop&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=internxt_drive-desktop)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=internxt_drive-desktop&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=internxt_drive-desktop)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=internxt_drive-desktop&metric=coverage)](https://sonarcloud.io/summary/new_code?id=internxt_drive-desktop)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=internxt_drive-desktop&metric=bugs)](https://sonarcloud.io/summary/new_code?id=internxt_drive-desktop)
+This project maintains high code quality standards through automated testing, linting, and security scanning.
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🔗 Links
-
-- [Internxt Website](https://internxt.com)
-- [Internxt Drive](https://drive.internxt.com)
-- [Internxt Blog](https://blog.internxt.com)
-- [Support](https://help.internxt.com)
-
 ## 💬 Community
 
-- [Discord](https://discord.gg/internxt)
-- [Twitter](https://twitter.com/Internxt)
 - [GitHub Issues](https://github.com/logic-arts-official/iDrive/issues)
+- [GitHub Discussions](https://github.com/logic-arts-official/iDrive/discussions)
 
 ## 🙏 Acknowledgments
 
@@ -215,5 +204,8 @@ Built with:
 ---
 
 <div align="center">
-Made with ❤️ by the Internxt team
+
+**Original Project**: [Internxt Drive Desktop](https://github.com/internxt/drive-desktop)  
+Made with ❤️ by the community
+
 </div>
