@@ -149,7 +149,7 @@ Domain-Driven Design (DDD) context boundaries:
 Technical infrastructure and external service integrations:
 
 - **Device** (`device/`): Device-specific implementations
-- **Drive Server** (`drive-server-wip/`): API client for Internxt backend
+- **Drive Server** (`drive-server-wip/`): API client for backend (using Internxt SDK)
 - **File System** (`file-system/`): File system abstraction layer
 - **InxtJS** (`inxt-js/`): 
   - Content downloader
@@ -182,7 +182,7 @@ Sync Engine processes event
          ↓
 File is chunked and encrypted
          ↓
-Upload to Internxt cloud via InxtJS
+Upload to cloud via InxtJS (Internxt SDK)
          ↓
 Database updated with file metadata
          ↓

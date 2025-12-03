@@ -449,7 +449,7 @@ const decryptedStream = await decryptFile(
 
 ### Drive Server Client (`src/infra/drive-server-wip/`)
 
-HTTP client for Internxt backend API.
+HTTP client for backend API (using Internxt SDK for compatibility).
 
 ```typescript
 import { driveServerWipModule } from '@/infra/drive-server-wip';

@@ -326,9 +326,10 @@ async function processEncryptionKey(key: Buffer) {
 **All API communication uses HTTPS**:
 
 ```typescript
-// API client configuration
+// API client configuration (example)
+// Note: Update baseUrl to your own API endpoint
 const apiClient = createClient({
-  baseUrl: 'https://api.internxt.com',
+  baseUrl: 'https://your-api-server.com',
   timeout: 30000,
   validateStatus: (status) => status < 500,
   // TLS configuration
