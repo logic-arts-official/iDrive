@@ -38,7 +38,7 @@
     "test:renderer:one": "vitest --config vitest.config.renderer.mts --watch related x",
     "coverage:merge": "lcov-result-merger 'coverage/*/lcov.info' 'coverage/lcov.info'",
     "========== Native deps ==========": "",
-    "electron-rebuild": "electron-rebuild --sequential --force --types prod,dev,optional --module-dir .",
+    "electron-rebuild": "@electron/rebuild --sequential --force --types prod,dev,optional --module-dir .",
     "reload-native-deps": "ts-node .erb/scripts/check-native-deps.ts && npm run electron-rebuild",
     "========== Other ==========": "",
     "clamav": "powershell release/clamAV.ps1",
@@ -77,6 +77,7 @@
     ]
   },
   "devDependencies": {
+    "@electron/rebuild": "^3.7.2",
     "@internxt/eslint-config-internxt": "1.0.9",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.1",
     "@svgr/webpack": "^6.1.2",
@@ -112,7 +113,6 @@
     "dotenv-webpack": "^7.0.3",
     "electron": "^39.2.4",
     "electron-builder": "^26.0.12",
-    "electron-rebuild": "^3.2.9",
     "eslint": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-import-resolver-webpack": "^0.13.2",
@@ -190,7 +190,7 @@
     "jwt-decode": "^3.1.2",
     "lodash.debounce": "^4.0.8",
     "openapi-fetch": "^0.13.4",
-    "openpgp": "5.11.3",
+    "openpgp": "^6.2.2",
     "phosphor-react": "^1.4.1",
     "react": "^17.0.2",
     "react-circular-progressbar": "^2.1.0",
