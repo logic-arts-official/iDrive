@@ -11,6 +11,9 @@ import tseslint from 'typescript-eslint';
 export default tseslint.config(
   ...internxtConfig,
   {
+    ignores: ['**/assets.d.ts', 'node_modules/**', '**/schema.ts', 'dist/**', 'build/**'],
+  },
+  {
     plugins: {
       import: pluginImport,
       unicorn: pluginUnicorn,
@@ -20,7 +23,6 @@ export default tseslint.config(
       sonarjs: pluginSonarjs,
       '@tanstack/query': pluginQuery,
     },
-    ignores: ['assets.d.ts', 'node_modules/**', 'schema.ts', 'dist/**', 'build/**'],
   },
   {
     files: ['**/*.ts', '**/*.tsx'],
