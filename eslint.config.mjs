@@ -81,7 +81,7 @@ export default tseslint.config(
         { blankLine: 'always', prev: '*', next: 'function' },
         { blankLine: 'always', prev: 'multiline-expression', next: 'multiline-expression' },
       ],
-      'prettier/prettier': 'warn',
+      'prettier/prettier': 'error',
     },
   },
   {
