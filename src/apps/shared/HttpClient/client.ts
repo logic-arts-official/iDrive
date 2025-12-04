@@ -52,8 +52,8 @@ const middleware: Middleware = {
     const isEmptyResponse = response.status === 204 || response.headers.get('Content-Length') === '0';
 
     // Log detailed response information for non-JSON responses that will be parsed as JSON
-    // We skip logging for empty responses and responses that won't be parsed (like 401 which triggers logout)
-    const shouldLogResponse = !isEmptyResponse && !isJsonContentType && response.ok === false;
+    // This catches both error responses and successful responses with wrong content-type
+    const shouldLogResponse = !isEmptyResponse && !isJsonContentType;
 
     if (shouldLogResponse) {
       // Clone the response so we can read the body without consuming it
@@ -85,6 +85,8 @@ const middleware: Middleware = {
         });
       }
     }
+
+    return undefined;
   },
 };
 

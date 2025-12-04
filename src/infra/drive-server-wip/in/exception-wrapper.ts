@@ -39,15 +39,14 @@ export function exceptionWrapper({ loggerBody, exc, retry }: TProps) {
 function parseException({ exc }: { exc: unknown }) {
   const isAbort = isAbortError({ exc });
   const isNetwork = isNetworkConnectivityError({ exc });
-  const isJsonParseError = isJsonParseException({ exc });
-  const res = { isAbort, isNetwork, isJsonParseError };
+  const res = { isAbort, isNetwork };
 
   switch (true) {
     case isNetwork:
       return { ...res, excMessage: fetchExceptionSchema.safeParse(exc).data };
     case isAbort:
       return { ...res, excMessage: 'Aborted' };
-    case isJsonParseError:
+    case isJsonParseException({ exc }):
       // For JSON parse errors, provide more context
       return {
         ...res,
@@ -65,12 +64,13 @@ function parseException({ exc }: { exc: unknown }) {
 function isJsonParseException({ exc }: { exc: unknown }): boolean {
   if (exc instanceof SyntaxError) {
     const message = exc.message;
-    // Common JSON parse error messages
+    // Common JSON parse error messages - be specific to avoid false positives
     return (
       message.includes('Unexpected token') ||
-      message.includes('JSON') ||
+      message.includes('JSON.parse') ||
       message.includes('Unexpected end of JSON') ||
-      message.includes('Unexpected string in JSON')
+      message.includes('Unexpected string in JSON') ||
+      message.includes('not valid JSON')
     );
   }
   return false;
