@@ -40,7 +40,7 @@ function parseException({ exc }: { exc: unknown }) {
   const isAbort = isAbortError({ exc });
   const isNetwork = isNetworkConnectivityError({ exc });
   const isJsonParseError = isJsonParseException({ exc });
-  const res = { isAbort, isNetwork };
+  const res = { isAbort, isNetwork, isJsonParseError };
 
   switch (true) {
     case isNetwork:

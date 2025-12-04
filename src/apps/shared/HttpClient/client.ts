@@ -7,6 +7,8 @@ import { getAuthHeaders } from '@/apps/main/auth/headers';
 import { scheduleFetch } from './schedule-fetch';
 import { logger } from '../logger/logger';
 
+const MAX_RESPONSE_BODY_LOG_LENGTH = 500;
+
 export const getHeaders = async () => {
   if (process.type === 'renderer') return await ipcRendererSyncEngine.invoke('GET_HEADERS');
   return getAuthHeaders();
@@ -49,8 +51,11 @@ const middleware: Middleware = {
     const isJsonContentType = contentType?.includes('application/json');
     const isEmptyResponse = response.status === 204 || response.headers.get('Content-Length') === '0';
 
-    // Log detailed response information for non-JSON responses that we'll try to parse as JSON
-    if (!isEmptyResponse && !isJsonContentType && response.status !== 401) {
+    // Log detailed response information for non-JSON responses that will be parsed as JSON
+    // We skip logging for empty responses and responses that won't be parsed (like 401 which triggers logout)
+    const shouldLogResponse = !isEmptyResponse && !isJsonContentType && response.ok === false;
+
+    if (shouldLogResponse) {
       // Clone the response so we can read the body without consuming it
       const clonedResponse = response.clone();
 
@@ -70,7 +75,7 @@ const middleware: Middleware = {
           statusText: response.statusText,
           contentType,
           responseHeaders,
-          responseBody: responseBody.substring(0, 500), // Log first 500 chars to avoid huge logs
+          responseBody: responseBody.substring(0, MAX_RESPONSE_BODY_LOG_LENGTH),
         });
       } catch (error) {
         logger.error({
