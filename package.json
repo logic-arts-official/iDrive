@@ -50,7 +50,6 @@
     "reload-native-deps": "ts-node .erb/scripts/check-native-deps.ts && npm run electron-rebuild",
     "========== Other ==========": "",
     "clamav": "powershell release/clamAV.ps1",
-    "prepare": "husky install",
     "swagger_dev": "openapi-typescript http://localhost:3004/api-json -o ./src/apps/shared/HttpClient/schema.ts",
     "swagger_prod": "openapi-typescript https://gateway.internxt.com/drive/api-json -o ./src/apps/shared/HttpClient/schema.ts"
   },
@@ -129,7 +128,6 @@
     "eslint-plugin-sonarjs": "^3.0.4",
     "eslint-plugin-unicorn": "^56.0.1",
     "html-webpack-plugin": "^5.5.0",
-    "husky": "^7.0.4",
     "jsdom": "^27.2.0",
     "jsonwebtoken": "^9.0.2",
     "knip": "^5.69.1",
