@@ -39,6 +39,7 @@ export function exceptionWrapper({ loggerBody, exc, retry }: TProps) {
 function parseException({ exc }: { exc: unknown }) {
   const isAbort = isAbortError({ exc });
   const isNetwork = isNetworkConnectivityError({ exc });
+  const isJsonParseError = isJsonParseException({ exc });
   const res = { isAbort, isNetwork };
 
   switch (true) {
@@ -46,7 +47,31 @@ function parseException({ exc }: { exc: unknown }) {
       return { ...res, excMessage: fetchExceptionSchema.safeParse(exc).data };
     case isAbort:
       return { ...res, excMessage: 'Aborted' };
+    case isJsonParseError:
+      // For JSON parse errors, provide more context
+      return {
+        ...res,
+        excMessage: {
+          error: 'JSON Parse Error',
+          message: exc instanceof Error ? exc.message : String(exc),
+          hint: 'The server may have returned HTML or another non-JSON response. Check the logs above for response details.',
+        },
+      };
     default:
       return { ...res, excMessage: exc };
   }
+}
+
+function isJsonParseException({ exc }: { exc: unknown }): boolean {
+  if (exc instanceof SyntaxError) {
+    const message = exc.message;
+    // Common JSON parse error messages
+    return (
+      message.includes('Unexpected token') ||
+      message.includes('JSON') ||
+      message.includes('Unexpected end of JSON') ||
+      message.includes('Unexpected string in JSON')
+    );
+  }
+  return false;
 }

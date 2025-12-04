@@ -15,6 +15,12 @@ export function errorWrapper({ loggerBody, error, response, retry }: TProps) {
   const isKnownError = isServerError({ response });
   const exc = isKnownError ? 'Server error' : error;
 
+  // Collect response headers for better debugging
+  const responseHeaders: Record<string, string> = {};
+  response.headers.forEach((value, key) => {
+    responseHeaders[key] = value;
+  });
+
   const loggedError = logger.error({
     ...loggerBody,
     msg: `${loggerBody.msg} was not successful`,
@@ -23,6 +29,8 @@ export function errorWrapper({ loggerBody, error, response, retry }: TProps) {
     response: {
       status: response.status,
       statusText: response.statusText,
+      headers: responseHeaders,
+      contentType: response.headers.get('content-type'),
     },
   });
 

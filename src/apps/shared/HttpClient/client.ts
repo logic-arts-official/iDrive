@@ -5,6 +5,7 @@ import { ipcRendererSyncEngine } from '../../sync-engine/ipcRendererSyncEngine';
 import eventBus from '@/apps/main/event-bus';
 import { getAuthHeaders } from '@/apps/main/auth/headers';
 import { scheduleFetch } from './schedule-fetch';
+import { logger } from '../logger/logger';
 
 export const getHeaders = async () => {
   if (process.type === 'renderer') return await ipcRendererSyncEngine.invoke('GET_HEADERS');
@@ -38,9 +39,46 @@ const middleware: Middleware = {
 
     return request;
   },
-  onResponse({ response }) {
+  async onResponse({ response, schemaPath }) {
     if (response.status === 401) {
       handleOnUserUnauthorized();
+    }
+
+    // Check for non-JSON responses that might cause parsing errors
+    const contentType = response.headers.get('content-type');
+    const isJsonContentType = contentType?.includes('application/json');
+    const isEmptyResponse = response.status === 204 || response.headers.get('Content-Length') === '0';
+
+    // Log detailed response information for non-JSON responses that we'll try to parse as JSON
+    if (!isEmptyResponse && !isJsonContentType && response.status !== 401) {
+      // Clone the response so we can read the body without consuming it
+      const clonedResponse = response.clone();
+
+      try {
+        const responseBody = await clonedResponse.text();
+
+        // Log the response headers
+        const responseHeaders: Record<string, string> = {};
+        response.headers.forEach((value, key) => {
+          responseHeaders[key] = value;
+        });
+
+        logger.error({
+          msg: 'Unexpected response content type',
+          endpoint: schemaPath,
+          status: response.status,
+          statusText: response.statusText,
+          contentType,
+          responseHeaders,
+          responseBody: responseBody.substring(0, 500), // Log first 500 chars to avoid huge logs
+        });
+      } catch (error) {
+        logger.error({
+          msg: 'Failed to read response body for logging',
+          endpoint: schemaPath,
+          error,
+        });
+      }
     }
   },
 };
